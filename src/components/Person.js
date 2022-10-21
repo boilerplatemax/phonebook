@@ -4,7 +4,7 @@ import ButtonGroup from './ButtonGroup'
 export default function Person({updateHandler,removeHandler,person}) {
 
 const [editing, setEditing]=useState(false)
-const personInfo = useRef({name:person.name, number:person.number})
+const personInfo = useRef({name:person.name, number:person.number, id:person.id})
   const editHandler = person =>{
     
     if(editing)updateHandler(person.id, personInfo.current)

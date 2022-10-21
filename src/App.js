@@ -11,14 +11,14 @@ const App = () => {
   const personInfo = useRef({name:'',number:''})
 
   useEffect(()=>{
-    personService.service.getAll()
+    personService.getAll()
     .then(response=>{
       setPersons(response)
     })
     
   },[])
   const removeHandler=id=>{
-    personService.service.remove(id)
+    personService.remove(id)
     const filteredPersons=persons.filter(person=>person.id!==id)
     setPersons(filteredPersons)
   }
@@ -28,13 +28,14 @@ const App = () => {
   const submitHandler=e=>{
     e.preventDefault()
     const name = personInfo.current.name
+    if(name==='')return
     const alreadyHasName = persons.filter(person=>person.name===name).length>0
     if(alreadyHasName){
       alert(`${name} is already added to phonebook`)
       return
     }
     const currentInfo={name:personInfo.current.name, number: personInfo.current.number}
-    personService.service.create(currentInfo)
+    personService.create(currentInfo)
     .then(returnedPerson => {
       setPersons(persons.concat(returnedPerson))
       personInfo.current={name:'',number:''}
@@ -50,15 +51,13 @@ const App = () => {
     setSearchFilters(filter)
   }
   const updateHandler = (id,newObj) =>{
-    // const indexOfUpdate = persons.findIndex(person=>person.id===id)
-    // const updatedPersons=persons
-    // setPersons(updatedPersons)
+    const indexOfUpdate = persons.findIndex(person=>person.id===id)
+    let updatedPersons=persons
+    persons[indexOfUpdate]=newObj
+    setPersons([...updatedPersons])
 
-    personService.service.update(id,newObj)
-    personService.service.getAll()
-    .then(response=>{
-      setPersons(response)
-    })
+    personService.update(id,newObj)
+
   }
 
   const personsToShow = searchFilters===''?persons:persons.filter(person=>(person.name.toLowerCase()).includes(searchFilters.toLowerCase()))
