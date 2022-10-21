@@ -1,16 +1,12 @@
 import React,{ useState, useEffect, useRef } from 'react'
 import personService from './services/PersonService'
-import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
 import Filter from './components/Filter'
 import './App.css'
 
-
-
 const App = () => {
   const [persons, setPersons] = useState([])
   const [searchFilters, setSearchFilters] = useState('')
-  const [message, setMessage] = useState(null)
 
   const personInfo = useRef({name:'',number:''})
 
@@ -41,26 +37,12 @@ const App = () => {
     personService.create(currentInfo)
     .then(returnedPerson => {
       setPersons(persons.concat(returnedPerson))
-
       personInfo.current={name:'',number:''}
-      setMessage(
-        `${name} was successfully added`
-      )
-      setTimeout(() => {
-        setMessage(null)
-      }, 5000)
     })
     .catch(error => {
-      setMessage(
-        `[ERROR] ${error.response.data.error}`
-      )
-      setTimeout(() => {
-        setMessage(null)
-      }, 5000)
       console.log(error.response.data)
     })
     setPersons([...persons,currentInfo])
-
     document.getElementById('myForm').reset()
   }
   const filterHandler = e =>{
