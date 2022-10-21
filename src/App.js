@@ -11,14 +11,14 @@ const App = () => {
   const personInfo = useRef({name:'',number:''})
 
   useEffect(()=>{
-    personService.getAll()
+    personService.service.getAll()
     .then(response=>{
       setPersons(response)
     })
     
   },[])
   const removeHandler=id=>{
-    personService.remove(id)
+    personService.service.remove(id)
     const filteredPersons=persons.filter(person=>person.id!==id)
     setPersons(filteredPersons)
   }
@@ -34,7 +34,7 @@ const App = () => {
       return
     }
     const currentInfo={name:personInfo.current.name, number: personInfo.current.number}
-    personService.create(currentInfo)
+    personService.service.create(currentInfo)
     .then(returnedPerson => {
       setPersons(persons.concat(returnedPerson))
       personInfo.current={name:'',number:''}
@@ -54,8 +54,8 @@ const App = () => {
     // const updatedPersons=persons
     // setPersons(updatedPersons)
 
-    personService.update(id,newObj)
-    personService.getAll()
+    personService.service.update(id,newObj)
+    personService.service.getAll()
     .then(response=>{
       setPersons(response)
     })

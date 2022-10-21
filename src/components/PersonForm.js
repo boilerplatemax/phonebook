@@ -1,4 +1,4 @@
-const PersonForm=({submitHandler,inputInfoHandler})=>{
+const PersonForm=({inputInfoHandler})=>{
     return(
       <tr className='persons-row'>
         <td>
