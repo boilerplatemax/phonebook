@@ -1,0 +1,114 @@
+.app{
+  height: 100%;
+  background-color: white;
+}
+.title{
+  
+  color: rgb(48, 48, 48);
+  font-weight: bold;
+  text-align: left;
+  margin: 0;
+}
+.phonebook{
+
+  padding: 20px;
+  
+  height:100vh;
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+
+}
+.persons-table{
+  width: 100vw;
+  border-collapse: collapse;
+  text-align: left;
+}
+.persons-row,.persons-header,.button-group{
+  height: 60px;
+}
+
+.persons-row:nth-child(odd){
+  background-color: whitesmoke;
+}
+.persons-row:nth-child(even){
+  background-color: white;
+}
+.persons-header{
+  background-color: dodgerblue;
+  color:white;
+}
+.persons-name,.persons-number{
+  width: 40%;
+  padding:0px 20px;
+}
+.person-input{
+  width: 90%;
+  height: 30px;
+}
+.personForm-input{
+  width: 95%;
+  height: 30px;
+}
+.filter{
+  align-self: start;
+}
+.filter__input{
+  width: 300px;
+  height: 30px;
+
+}
+.personform__btn-submit{
+  padding: 5px 10px;
+  height: 35px;
+}
+.personform__input{
+  height: 30px;
+}
+.personform__form{
+  display: flex;
+  gap:5px;
+  flex-direction: row;
+  justify-content: center;
+}
+.btn-remove{
+  background-color: transparent;
+  font-weight: bold;
+  border: none;
+  cursor:pointer;
+  font-size: 2rem;
+}
+.btn-remove:hover{
+  color: grey;
+}
+.button-group{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 20px;
+}
+.btn{
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn-primary{
+  background-color:dodgerblue;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+.btn-edit{
+  background-color:rgb(250, 166, 57);
+  color: white;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
+.btn-add{
+  background-color:rgb(255, 255, 255);
+  color: dodgerblue;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
