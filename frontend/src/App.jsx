@@ -98,7 +98,7 @@ const App = () => {
   }
   return (
     <div>
-      <h2 style={{color:"blue"}}>Phonebook</h2>
+      <h2 style={{color:"purple"}}>Phonebook</h2>
       <Notification message={message}/>
       <Filter handleFilterChange={handleFilterChange} filter={filter} />
       <h2>Add a new</h2>
